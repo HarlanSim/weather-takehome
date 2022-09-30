@@ -1,11 +1,5 @@
 import React, { Component } from "react";
 
-type WeatherData = {
-  icon: string;
-  temp: number;
-  day: string;
-};
-
 interface TopNavProps {
   cities: string[];
 }

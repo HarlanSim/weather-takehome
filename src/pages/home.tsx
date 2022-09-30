@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import TopNav from "../components/topNav";
 import WeatherBox from "../components/weatherBox";
+import { WeatherData } from "../components/types";
 import CITIES from "../constants/cities";
-
-type WeatherData = {
-  icon: string;
-  temp: number;
-  day: string;
-};
 
 class Home extends Component {
   mockWeatherData: WeatherData[] = [
