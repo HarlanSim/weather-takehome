@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import TopNav from "../components/topNav";
 import WeatherBox from "../components/weatherBox";
 import { WeatherData } from "../components/types";
-import CITIES from "../constants/cities";
 
 class Home extends Component {
   mockWeatherData: WeatherData[] = [
@@ -14,6 +13,7 @@ class Home extends Component {
   ];
   state = {
     weatherData: this.mockWeatherData,
+    selectedCityIndex: 0,
   };
   componentDidMount() {
     // fetch weather for each city
@@ -26,10 +26,15 @@ class Home extends Component {
     // ];
     //this.setState({ weatherData: weatherData });
   }
+  selectCity(index) {
+    this.setState({
+      selectedCityIndex: index,
+    });
+  }
   render() {
     return (
       <>
-        <TopNav cities={CITIES} />
+        <TopNav selectCity={this.selectCity} />
         <WeatherBox weatherData={this.state.weatherData} />
       </>
     );

@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import CITIES from "../constants/cities";
+import CityHeader from "./cityHeader";
 
 interface TopNavProps {
-  cities: string[];
+  selectCity: Function;
 }
 
 interface TopNavState {
@@ -16,8 +18,24 @@ class TopNav extends Component<TopNavProps, TopNavState> {
   componentDidMount() {
     // fetch weather for each city
   }
+
+  onCityClick(e) {
+    const index = 1;
+    this.props.selectCity(index);
+    this.setState({ selectedCityIndex: index });
+  }
+  generateCityHeaders() {
+    const { selectedCityIndex } = this.state;
+
+    return CITIES.map((city, index) => {
+      return (
+        <CityHeader /> //name={city.name} isSelected={selectedCityIndex === index} />
+      );
+    });
+  }
   render() {
-    return <div></div>;
+    const headers = this.generateCityHeaders();
+    return <div className="topNav">{headers}</div>;
   }
 }
 
