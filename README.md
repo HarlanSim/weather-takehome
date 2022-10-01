@@ -1,2 +1,2 @@
-# Weather web application takehome assignment
+# Simple Weather Forecast App
 ### https://weather-takehome.herokuapp.com/
