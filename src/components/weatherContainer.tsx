@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { CityData, WeatherData } from '../utils/types';
 import { getWeather } from '../utils/weatherAPI';
+import { getIcon } from '../utils/icon';
 
 interface WeatherContainerProps {
   city: CityData;
@@ -46,14 +47,14 @@ class WeatherContainer extends Component<
     const forecast = otherDays.map((day) => {
       return (
         <div>
-          {day.day} {day.icon} {day.temp}
+          {day.day} {getIcon(day.icon)} {day.temp}
         </div>
       );
     });
     return (
       <div>
         <div>
-          {today.day} {today.icon} {today.temp}
+          {today.day} {getIcon(today.icon)} {today.temp}
         </div>
         {...forecast}
       </div>
