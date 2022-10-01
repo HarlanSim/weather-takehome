@@ -3,3 +3,9 @@ export type WeatherData = {
   temp: number;
   day: string;
 };
+
+export type CityData = {
+  name: string;
+  lat: number;
+  lon: number;
+};

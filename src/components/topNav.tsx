@@ -1,41 +1,29 @@
-import React, { Component } from "react";
-import CITIES from "../constants/cities";
-import CityHeader from "./cityHeader";
+import React, { Component } from 'react';
+import CITIES from '../constants/cities';
+import CityHeader from './cityHeader';
 
 interface TopNavProps {
   selectCity: Function;
-}
-
-interface TopNavState {
   selectedCityIndex: number;
 }
 
-class TopNav extends Component<TopNavProps, TopNavState> {
-  state: TopNavState = {
-    selectedCityIndex: 0,
-  };
-
-  componentDidMount() {
-    // fetch weather for each city
-  }
-
-  onCityClick(e) {
-    const index = 1;
-    this.props.selectCity(index);
-    this.setState({ selectedCityIndex: index });
-  }
+class TopNav extends Component<TopNavProps> {
   generateCityHeaders() {
-    const { selectedCityIndex } = this.state;
+    const { selectedCityIndex, selectCity } = this.props;
 
     return CITIES.map((city, index) => {
       return (
-        <CityHeader /> //name={city.name} isSelected={selectedCityIndex === index} />
+        <CityHeader
+          name={city.name}
+          isSelected={selectedCityIndex === index}
+          selectCity={selectCity}
+        />
       );
     });
   }
   render() {
-    const headers = this.generateCityHeaders();
-    return <div className="topNav">{headers}</div>;
+    const Headers = this.generateCityHeaders();
+    return <div className='topNav'>{...Headers}</div>;
   }
 }
 
