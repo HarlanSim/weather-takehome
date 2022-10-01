@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CITIES from '../constants/cities';
+import { CITIES } from '../utils/constants';
 import CityHeader from './cityHeader';
 
 interface TopNavProps {

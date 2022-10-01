@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import TopNav from '../components/topNav';
-import WeatherBox from '../components/weatherBox';
-import { WeatherData } from '../utils/types';
+import WeatherContainer from '../components/weatherContainer';
+import { CITIES } from '../utils/constants';
+import { CityData, WeatherData } from '../utils/types';
+import { getWeather } from '../utils/weatherAPI';
 
 class Home extends Component {
-  mockWeatherData: WeatherData[] = [
-    { icon: 'cloudy', temp: 19, day: 'Monday' },
-    { icon: 'sunny', temp: 24, day: 'Tuesday' },
-    { icon: 'thunder', temp: 15, day: 'Wednesday' },
-    { icon: 'clear', temp: 22, day: 'Thursday' },
-    { icon: 'partially cloudy', temp: 20, day: 'Friday' },
-  ];
   state = {
-    weatherData: this.mockWeatherData,
+    weatherData: null,
     selectedCityIndex: 0,
   };
-  componentDidMount() {
+
+  async componentDidMount() {
     // fetch weather for each city
-    //this.setState({ weatherData: weatherData });
+    const city: CityData = CITIES[this.state.selectedCityIndex];
+    const weatherData: WeatherData[] = await getWeather(city);
+    this.setState({ weatherData: weatherData });
   }
+
   selectCity(index) {
     this.setState({
       selectedCityIndex: index,
@@ -32,7 +31,7 @@ class Home extends Component {
           selectedCityIndex={selectedCityIndex}
           selectCity={this.selectCity}
         />
-        <WeatherBox weatherData={weatherData} />
+        <WeatherContainer weatherData={weatherData} />
       </>
     );
   }

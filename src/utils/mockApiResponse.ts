@@ -1,9 +1,7 @@
-import React, { Component } from "react";
-
-let weatherObj = {
+export const MOCK_RESPONSE = {
   lat: 35.6762,
   lon: 139.6503,
-  timezone: "Asia/Tokyo",
+  timezone: 'Asia/Tokyo',
   timezone_offset: 32400,
   current: {
     dt: 1664513641,
@@ -20,7 +18,7 @@ let weatherObj = {
     wind_speed: 2.06,
     wind_deg: 340,
     weather: [
-      { id: 802, main: "Clouds", description: "scattered clouds", icon: "03d" },
+      { id: 802, main: 'Clouds', description: 'scattered clouds', icon: '03d' },
     ],
   },
   minutely: [
@@ -103,9 +101,9 @@ let weatherObj = {
       weather: [
         {
           id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03d",
+          main: 'Clouds',
+          description: 'scattered clouds',
+          icon: '03d',
         },
       ],
       pop: 0,
@@ -126,9 +124,9 @@ let weatherObj = {
       weather: [
         {
           id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03d",
+          main: 'Clouds',
+          description: 'scattered clouds',
+          icon: '03d',
         },
       ],
       pop: 0,
@@ -149,9 +147,9 @@ let weatherObj = {
       weather: [
         {
           id: 802,
-          main: "Clouds",
-          description: "scattered clouds",
-          icon: "03d",
+          main: 'Clouds',
+          description: 'scattered clouds',
+          icon: '03d',
         },
       ],
       pop: 0,
@@ -170,7 +168,7 @@ let weatherObj = {
       wind_deg: 96,
       wind_gust: 4.39,
       weather: [
-        { id: 801, main: "Clouds", description: "few clouds", icon: "02d" },
+        { id: 801, main: 'Clouds', description: 'few clouds', icon: '02d' },
       ],
       pop: 0,
     },
@@ -188,7 +186,7 @@ let weatherObj = {
       wind_deg: 93,
       wind_gust: 5.42,
       weather: [
-        { id: 801, main: "Clouds", description: "few clouds", icon: "02d" },
+        { id: 801, main: 'Clouds', description: 'few clouds', icon: '02d' },
       ],
       pop: 0,
     },
@@ -206,7 +204,7 @@ let weatherObj = {
       wind_deg: 87,
       wind_gust: 6.33,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -224,7 +222,7 @@ let weatherObj = {
       wind_deg: 82,
       wind_gust: 6.56,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -242,7 +240,7 @@ let weatherObj = {
       wind_deg: 81,
       wind_gust: 6.19,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -260,7 +258,7 @@ let weatherObj = {
       wind_deg: 81,
       wind_gust: 5.58,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -278,7 +276,7 @@ let weatherObj = {
       wind_deg: 63,
       wind_gust: 4.54,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0.01,
     },
@@ -296,7 +294,7 @@ let weatherObj = {
       wind_deg: 44,
       wind_gust: 4.36,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0.07,
     },
@@ -314,7 +312,7 @@ let weatherObj = {
       wind_deg: 34,
       wind_gust: 4.48,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0.11,
     },
@@ -332,7 +330,7 @@ let weatherObj = {
       wind_deg: 21,
       wind_gust: 4.98,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0.12,
     },
@@ -350,7 +348,7 @@ let weatherObj = {
       wind_deg: 17,
       wind_gust: 5.12,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0.12,
     },
@@ -368,7 +366,7 @@ let weatherObj = {
       wind_deg: 14,
       wind_gust: 4.94,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0.12,
     },
@@ -386,7 +384,7 @@ let weatherObj = {
       wind_deg: 13,
       wind_gust: 5,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -404,7 +402,7 @@ let weatherObj = {
       wind_deg: 4,
       wind_gust: 5.71,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -422,7 +420,7 @@ let weatherObj = {
       wind_deg: 4,
       wind_gust: 5.84,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -440,7 +438,7 @@ let weatherObj = {
       wind_deg: 8,
       wind_gust: 5.52,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -458,7 +456,7 @@ let weatherObj = {
       wind_deg: 10,
       wind_gust: 5.25,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -476,7 +474,7 @@ let weatherObj = {
       wind_deg: 10,
       wind_gust: 5.05,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -494,7 +492,7 @@ let weatherObj = {
       wind_deg: 17,
       wind_gust: 4.68,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -512,7 +510,7 @@ let weatherObj = {
       wind_deg: 25,
       wind_gust: 4.47,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -530,7 +528,7 @@ let weatherObj = {
       wind_deg: 30,
       wind_gust: 4.22,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -548,7 +546,7 @@ let weatherObj = {
       wind_deg: 29,
       wind_gust: 4.26,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -566,7 +564,7 @@ let weatherObj = {
       wind_deg: 31,
       wind_gust: 4.49,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -584,7 +582,7 @@ let weatherObj = {
       wind_deg: 33,
       wind_gust: 4.77,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -602,7 +600,7 @@ let weatherObj = {
       wind_deg: 45,
       wind_gust: 5.53,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -620,7 +618,7 @@ let weatherObj = {
       wind_deg: 57,
       wind_gust: 5.89,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -638,7 +636,7 @@ let weatherObj = {
       wind_deg: 65,
       wind_gust: 5.98,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -656,7 +654,7 @@ let weatherObj = {
       wind_deg: 68,
       wind_gust: 5.94,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -674,7 +672,7 @@ let weatherObj = {
       wind_deg: 70,
       wind_gust: 6.01,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -692,7 +690,7 @@ let weatherObj = {
       wind_deg: 65,
       wind_gust: 5.66,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -710,7 +708,7 @@ let weatherObj = {
       wind_deg: 55,
       wind_gust: 5.38,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -728,7 +726,7 @@ let weatherObj = {
       wind_deg: 37,
       wind_gust: 4.9,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -746,7 +744,7 @@ let weatherObj = {
       wind_deg: 28,
       wind_gust: 5.02,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -764,7 +762,7 @@ let weatherObj = {
       wind_deg: 24,
       wind_gust: 4.66,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -782,7 +780,7 @@ let weatherObj = {
       wind_deg: 8,
       wind_gust: 4.73,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -800,7 +798,7 @@ let weatherObj = {
       wind_deg: 358,
       wind_gust: 5.24,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01n" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01n' },
       ],
       pop: 0,
     },
@@ -818,7 +816,7 @@ let weatherObj = {
       wind_deg: 3,
       wind_gust: 5.76,
       weather: [
-        { id: 803, main: "Clouds", description: "broken clouds", icon: "04n" },
+        { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04n' },
       ],
       pop: 0,
     },
@@ -836,7 +834,7 @@ let weatherObj = {
       wind_deg: 10,
       wind_gust: 6.03,
       weather: [
-        { id: 803, main: "Clouds", description: "broken clouds", icon: "04n" },
+        { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04n' },
       ],
       pop: 0,
     },
@@ -854,7 +852,7 @@ let weatherObj = {
       wind_deg: 4,
       wind_gust: 6.56,
       weather: [
-        { id: 803, main: "Clouds", description: "broken clouds", icon: "04d" },
+        { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04d' },
       ],
       pop: 0,
     },
@@ -872,7 +870,7 @@ let weatherObj = {
       wind_deg: 6,
       wind_gust: 6.62,
       weather: [
-        { id: 803, main: "Clouds", description: "broken clouds", icon: "04d" },
+        { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04d' },
       ],
       pop: 0,
     },
@@ -890,7 +888,7 @@ let weatherObj = {
       wind_deg: 16,
       wind_gust: 6.08,
       weather: [
-        { id: 803, main: "Clouds", description: "broken clouds", icon: "04d" },
+        { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04d' },
       ],
       pop: 0,
     },
@@ -908,7 +906,7 @@ let weatherObj = {
       wind_deg: 24,
       wind_gust: 5.52,
       weather: [
-        { id: 803, main: "Clouds", description: "broken clouds", icon: "04d" },
+        { id: 803, main: 'Clouds', description: 'broken clouds', icon: '04d' },
       ],
       pop: 0,
     },
@@ -926,7 +924,7 @@ let weatherObj = {
       wind_deg: 37,
       wind_gust: 5.26,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -944,7 +942,7 @@ let weatherObj = {
       wind_deg: 37,
       wind_gust: 5.05,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -962,7 +960,7 @@ let weatherObj = {
       wind_deg: 37,
       wind_gust: 5.02,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       pop: 0,
     },
@@ -991,7 +989,7 @@ let weatherObj = {
       wind_deg: 87,
       wind_gust: 6.56,
       weather: [
-        { id: 500, main: "Rain", description: "light rain", icon: "10d" },
+        { id: 500, main: 'Rain', description: 'light rain', icon: '10d' },
       ],
       clouds: 26,
       pop: 0.8,
@@ -1021,7 +1019,7 @@ let weatherObj = {
       wind_deg: 65,
       wind_gust: 6.01,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       clouds: 0,
       pop: 0.12,
@@ -1050,7 +1048,7 @@ let weatherObj = {
       wind_deg: 80,
       wind_gust: 6.62,
       weather: [
-        { id: 800, main: "Clear", description: "clear sky", icon: "01d" },
+        { id: 800, main: 'Clear', description: 'clear sky', icon: '01d' },
       ],
       clouds: 0,
       pop: 0,
@@ -1081,9 +1079,9 @@ let weatherObj = {
       weather: [
         {
           id: 804,
-          main: "Clouds",
-          description: "overcast clouds",
-          icon: "04d",
+          main: 'Clouds',
+          description: 'overcast clouds',
+          icon: '04d',
         },
       ],
       clouds: 100,
@@ -1113,7 +1111,7 @@ let weatherObj = {
       wind_deg: 197,
       wind_gust: 10.6,
       weather: [
-        { id: 801, main: "Clouds", description: "few clouds", icon: "02d" },
+        { id: 801, main: 'Clouds', description: 'few clouds', icon: '02d' },
       ],
       clouds: 18,
       pop: 0,
@@ -1142,7 +1140,7 @@ let weatherObj = {
       wind_deg: 74,
       wind_gust: 7.7,
       weather: [
-        { id: 500, main: "Rain", description: "light rain", icon: "10d" },
+        { id: 500, main: 'Rain', description: 'light rain', icon: '10d' },
       ],
       clouds: 99,
       pop: 0.49,
@@ -1174,9 +1172,9 @@ let weatherObj = {
       weather: [
         {
           id: 502,
-          main: "Rain",
-          description: "heavy intensity rain",
-          icon: "10d",
+          main: 'Rain',
+          description: 'heavy intensity rain',
+          icon: '10d',
         },
       ],
       clouds: 100,
@@ -1209,9 +1207,9 @@ let weatherObj = {
       weather: [
         {
           id: 502,
-          main: "Rain",
-          description: "heavy intensity rain",
-          icon: "10d",
+          main: 'Rain',
+          description: 'heavy intensity rain',
+          icon: '10d',
         },
       ],
       clouds: 100,
@@ -1221,69 +1219,3 @@ let weatherObj = {
     },
   ],
 };
-
-type WeatherData = {
-  icon: string;
-  temp: number;
-  day: string;
-};
-
-interface WeatherBoxProps {
-  weatherData: WeatherData[];
-}
-
-interface WeatherBoxState {
-  today: WeatherData;
-  day1: WeatherData;
-  day2: WeatherData;
-  day3: WeatherData;
-  day4: WeatherData;
-}
-
-class WeatherBox extends Component<WeatherBoxProps, WeatherBoxState> {
-  state: WeatherBoxState = {
-    today: this.props.weatherData[0],
-    day1: this.props.weatherData[1],
-    day2: this.props.weatherData[2],
-    day3: this.props.weatherData[3],
-    day4: this.props.weatherData[4],
-  };
-
-  componentDidMount() {
-    // fetch weather for each city
-    // const lat = "35.6762";
-    // const lon = "139.6503";
-    // fetch(
-    //   `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${}`
-    // )
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .then((data) => console.log(data));
-  }
-  render() {
-    const { today, day1, day2, day3, day4 } = this.state;
-    return (
-      <div>
-        <div>
-          Today:
-          {today.icon} {today.temp}
-        </div>
-        <div>
-          {day1.day}:{day1.icon} {day1.temp}
-        </div>
-        <div>
-          {day2.day}:{day2.icon} {day2.temp}
-        </div>
-        <div>
-          {day3.day}:{day3.icon} {day3.temp}
-        </div>
-        <div>
-          {day4.day}:{day4.icon} {day4.temp}
-        </div>
-      </div>
-    );
-  }
-}
-
-export default WeatherBox;

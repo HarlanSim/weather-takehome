@@ -9,3 +9,19 @@ export type CityData = {
   lat: number;
   lon: number;
 };
+
+export type WeatherResponse = {
+  timezone: string;
+  current: DayData;
+  daily: DayData[];
+};
+
+export type DayData = {
+  temp: number;
+  weather: DayWeatherData[];
+};
+
+export type DayWeatherData = {
+  main: string;
+  icon: string;
+};
