@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CITIES } from '../utils/constants';
-import CityOption from './CityOption';
+import CityOption from './cityOption';
 
 interface CityHeaderProps {
   selectCity: Function;
