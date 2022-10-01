@@ -46,17 +46,25 @@ class WeatherContainer extends Component<
     let [today, ...otherDays] = this.state.weatherData;
     const forecast = otherDays.map((day) => {
       return (
-        <div>
-          {day.day} {getIcon(day.icon)} {day.temp}
+        <div className='forecast-day'>
+          {day.day} {getIcon(day.icon)} {day.temp + '°'}
         </div>
       );
     });
+
     return (
-      <div>
-        <div>
-          {today.day} {getIcon(today.icon)} {today.temp}
+      <div className='weather-box'>
+        <div className='today-row'>
+          <div className='today-header'>{today.day}</div>
+          <div className='today-content'>
+            {getIcon(today.icon, true)}
+            <div className='today-info'>
+              <div className='today-temp'>{today.temp + '°'}</div>
+              <div className='today-description'>{today.description}</div>
+            </div>
+          </div>
         </div>
-        {...forecast}
+        <div className='forecast-row'>{...forecast}</div>
       </div>
     );
   }

@@ -6,14 +6,6 @@ export const CITIES: CityData[] = [
   { name: 'Vancouver', lat: 49.2827, lon: -123.1207 },
 ];
 
-export const DAYS: string[] = [
-  'Sun',
-  'Mon',
-  'Tues',
-  'Wed',
-  'Thurs',
-  'Fri',
-  'Sat',
-];
+export const DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 export const FORECAST_LENGTH = 4;

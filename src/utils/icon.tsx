@@ -14,10 +14,15 @@ import {
   faWater,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const getIcon = (iconName: string) => {
+export const getIcon = (iconName: string, isLarge: boolean = false) => {
   if (iconName) {
     const icon = iconLookup[iconName];
-    return <FontAwesomeIcon icon={icon} />;
+    return (
+      <FontAwesomeIcon
+        className={isLarge ? 'icon-large' : 'icon-small'}
+        icon={icon}
+      />
+    );
   }
 };
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import CityHeader from './cityHeader';
 import WeatherContainer from './weatherContainer';
 import { CITIES } from '../utils/constants';
-import '../styles/home.less';
+import '../styles/styles.less';
 
 interface HomeState {
   selectedCityIndex: number;
@@ -21,13 +21,13 @@ class Home extends Component {
   render() {
     const { selectedCityIndex } = this.state;
     return (
-      <>
+      <div className='home-container'>
         <CityHeader
           selectedCityIndex={selectedCityIndex}
           selectCity={(index) => this.selectCity(index)}
         />
         <WeatherContainer city={CITIES[selectedCityIndex]} />
-      </>
+      </div>
     );
   }
 }

@@ -36,6 +36,7 @@ const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
       icon: current.weather[0]?.icon ?? '',
       temp: current.temp ? Math.round(current.temp - 273.15) : 0,
       day: 'Today',
+      description: current.weather[0]?.main,
     });
     for (let index = 0; index < FORECAST_LENGTH; index++) {
       const day = daily[index];
