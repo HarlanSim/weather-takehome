@@ -15,7 +15,8 @@ class TopNav extends Component<TopNavProps> {
       return (
         <CityHeader
           name={city.name}
-          isSelected={selectedCityIndex === index}
+          index={index}
+          selectedCityIndex={selectedCityIndex}
           selectCity={selectCity}
         />
       );

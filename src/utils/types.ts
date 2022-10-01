@@ -12,16 +12,25 @@ export type CityData = {
 
 export type WeatherResponse = {
   timezone: string;
-  current: DayData;
+  current: TodayData;
   daily: DayData[];
 };
 
-export type DayData = {
+type TodayData = {
   temp: number;
   weather: DayWeatherData[];
 };
 
-export type DayWeatherData = {
+type DayData = {
+  temp: TempData;
+  weather: DayWeatherData[];
+};
+
+type TempData = {
+  day: number;
+};
+
+type DayWeatherData = {
   main: string;
   icon: string;
 };

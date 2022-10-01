@@ -1,4 +1,4 @@
-import { DAYS } from './constants';
+import { DAYS, FORECAST_LENGTH } from './constants';
 import { WeatherData, CityData, WeatherResponse } from './types';
 
 const getDayFromTimeZone = (timezone: string, increment: number): string => {
@@ -11,19 +11,22 @@ const getDayFromTimeZone = (timezone: string, increment: number): string => {
 
 export const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
   let result = [];
-  let { current } = data;
-  result.push({
-    icon: current?.weather[0]?.icon ?? '',
-    temp: data?.current?.temp ? data?.current?.temp - 273.15 : 0,
-    day: 'Today',
-  });
-  data?.daily?.forEach((day, index) =>
+  let { current, daily, timezone } = data;
+  if (data && current && daily) {
     result.push({
-      icon: day?.weather[0]?.icon,
-      temp: day?.temp ? day?.temp - 273.15 : 0,
-      day: getDayFromTimeZone(data.timezone, index + 1),
-    })
-  );
+      icon: current.weather[0]?.icon ?? '',
+      temp: current.temp ? Math.round(current.temp - 273.15) : 0,
+      day: 'Today',
+    });
+    for (let index = 0; index < FORECAST_LENGTH; index++) {
+      const day = daily[index];
+      result.push({
+        icon: day?.weather[0]?.icon,
+        temp: day?.temp ? Math.round(day?.temp?.day - 273.15) : 0,
+        day: getDayFromTimeZone(timezone, index + 1),
+      });
+    }
+  }
   return result;
 };
 

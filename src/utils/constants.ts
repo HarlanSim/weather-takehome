@@ -15,3 +15,5 @@ export const DAYS: string[] = [
   'Fri',
   'Sat',
 ];
+
+export const FORECAST_LENGTH = 4;

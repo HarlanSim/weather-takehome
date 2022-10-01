@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 
 interface CityHeaderProps {
   name: string;
-  isSelected: boolean;
+  index: number;
+  selectedCityIndex: number;
   selectCity: Function;
 }
 
 class CityHeader extends Component<CityHeaderProps> {
   render() {
-    const { name, isSelected, selectCity } = this.props;
+    const { name, index, selectedCityIndex, selectCity } = this.props;
     return (
       <div
-        className={isSelected ? 'active' : 'inactive'}
-        onClick={() => selectCity()}
+        className={selectedCityIndex === index ? 'active' : 'inactive'}
+        onClick={() => {
+          selectCity(index);
+        }}
       >
         {name}
       </div>
