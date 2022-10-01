@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CityData, WeatherData } from '../utils/types';
-import { getWeather } from '../utils/weatherAPI';
+import getWeather from '../utils/weatherAPI';
 import { getIcon } from '../utils/icon';
 
 interface WeatherContainerProps {

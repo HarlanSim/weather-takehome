@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import TopNav from './topNav';
+import CityHeader from './cityHeader';
 import WeatherContainer from './weatherContainer';
 import { CITIES } from '../utils/constants';
+import '../styles/home.less';
 
 interface HomeState {
   selectedCityIndex: number;
@@ -21,7 +22,7 @@ class Home extends Component {
     const { selectedCityIndex } = this.state;
     return (
       <>
-        <TopNav
+        <CityHeader
           selectedCityIndex={selectedCityIndex}
           selectCity={(index) => this.selectCity(index)}
         />

@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
+import { CITIES } from '../utils/constants';
+import CityOption from './CityOption';
 
 interface CityHeaderProps {
-  name: string;
-  index: number;
-  selectedCityIndex: number;
   selectCity: Function;
+  selectedCityIndex: number;
 }
 
 class CityHeader extends Component<CityHeaderProps> {
+  generateCityOptions() {
+    const { selectedCityIndex, selectCity } = this.props;
+
+    return CITIES.map((city, index) => {
+      return (
+        <CityOption
+          name={city.name}
+          index={index}
+          selectedCityIndex={selectedCityIndex}
+          selectCity={selectCity}
+        />
+      );
+    });
+  }
   render() {
-    const { name, index, selectedCityIndex, selectCity } = this.props;
-    return (
-      <div
-        className={selectedCityIndex === index ? 'active' : 'inactive'}
-        onClick={() => {
-          selectCity(index);
-        }}
-      >
-        {name}
-      </div>
-    );
+    const Options = this.generateCityOptions();
+    return <div className='city-header'>{...Options}</div>;
   }
 }
 

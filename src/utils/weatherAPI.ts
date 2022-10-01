@@ -1,15 +1,34 @@
 import { DAYS, FORECAST_LENGTH } from './constants';
 import { WeatherData, CityData, WeatherResponse } from './types';
 
-const getDayFromTimeZone = (timezone: string, increment: number): string => {
-  const dateString: string = new Date().toLocaleString('en-US', {
-    timeZone: timezone,
-  });
-  const dayIndex: number = new Date(dateString).getDay() + increment;
-  return DAYS[dayIndex % 7];
+export default async function getWeather(cityData: CityData) {
+  const appId = process.env.OPENWEATHER_APP_ID || '';
+  const rawWeatherData: WeatherResponse = await fetchWeatherData(
+    appId,
+    cityData.lat,
+    cityData.lon
+  );
+  return parseWeatherData(rawWeatherData);
+}
+
+const fetchWeatherData = (
+  appId: string,
+  lat: number,
+  lon: number
+): Promise<WeatherResponse> => {
+  return fetch(
+    `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appId}`
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
 };
 
-export const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
+const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
   let result = [];
   let { current, daily, timezone } = data;
   if (data && current && daily) {
@@ -30,29 +49,12 @@ export const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
   return result;
 };
 
-export const fetchWeatherData = (
-  appId: string,
-  lat: number,
-  lon: number
-): Promise<WeatherResponse> => {
-  return fetch(
-    `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appId}`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data);
-      return data;
-    });
+const getDayFromTimeZone = (timezone: string, increment: number): string => {
+  // Convert current datetime into the given timezone
+  const dateString: string = new Date().toLocaleString('en-US', {
+    timeZone: timezone,
+  });
+  // Get the day index, then mod it by 7 to get day from DAYS
+  const dayIndex: number = new Date(dateString).getDay() + increment;
+  return DAYS[dayIndex % 7];
 };
-
-export async function getWeather(cityData: CityData) {
-  const appId = process.env.OPENWEATHER_APP_ID || '';
-  const rawWeatherData: WeatherResponse = await fetchWeatherData(
-    appId,
-    cityData.lat,
-    cityData.lon
-  );
-  return parseWeatherData(rawWeatherData);
-}
