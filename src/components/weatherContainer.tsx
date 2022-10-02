@@ -47,7 +47,8 @@ class WeatherContainer extends Component<
     const forecast = otherDays.map((day) => {
       return (
         <div className='forecast-day'>
-          {day.day} {getIcon(day.icon)} {day.temp + '°'}
+          {day.day} {getIcon(day.icon)}{' '}
+          <span className='forecast-temp'>{day.temp + '°'}</span>
         </div>
       );
     });

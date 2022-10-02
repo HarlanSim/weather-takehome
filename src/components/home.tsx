@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import CityHeader from './cityHeader';
 import WeatherContainer from './weatherContainer';
 import { CITIES } from '../utils/constants';
-import '../styles/styles.less';
 
 interface HomeState {
   selectedCityIndex: number;

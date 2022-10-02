@@ -1,7 +1,9 @@
 @background_blue: rgb(239, 246, 250);
+@light_black: rgb(51, 51, 57);
 @primary_blue: rgb(115, 174, 227);
 @dark_blue: rgb(48, 64, 98);
 @light_blue: rgb(186, 210, 215);
+@number_font: 'Teko';
 
 .icon-small {
   height: 50px;
@@ -76,7 +78,9 @@ body {
 }
 
 .today-temp {
-  font-size: xx-large;
+  font-size: 3.5rem;
+  font-family: @number_font;
+  color: @light_black;
 }
 
 .today-info {
@@ -85,10 +89,12 @@ body {
 
 .today-description {
   font-size: large;
+  font-weight: 100;
 }
 
 .today-header {
   font-size: large;
+  font-weight: 100;
 }
 
 .today-row {
@@ -115,8 +121,15 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    font-weight: 100;
+
     width: 100%;
     height: 100%;
+    .forecast-temp {
+      font-family: @number_font;
+      color: @light_black;
+      font-size: 1.5rem;
+    }
   }
   .forecast-day:not(:first-child) {
     border-left: solid 2px white;
