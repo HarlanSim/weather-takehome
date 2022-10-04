@@ -1,7 +1,9 @@
 import { DAYS, FORECAST_LENGTH } from './constants';
 import { WeatherData, CityData, WeatherResponse } from './types';
 
-export default async function getWeather(cityData: CityData) {
+export default async function getWeather(
+  cityData: CityData
+): Promise<WeatherData[]> {
   const appId = process.env.OPENWEATHER_APP_ID || '';
   const rawWeatherData: WeatherResponse = await fetchWeatherData(
     appId,
@@ -20,10 +22,12 @@ const fetchWeatherData = (
     `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${appId}`
   )
     .then((response) => {
+      if (!response.ok) {
+        throw new Error('Unable to access Weather API');
+      }
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       return data;
     });
 };

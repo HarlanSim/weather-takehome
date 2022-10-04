@@ -27,6 +27,7 @@
 }
 
 .fa-spinner {
+  width: 100%;
   -webkit-animation: fa-spin 1s infinite linear;
   animation: fa-spin 1s infinite linear;
 }
@@ -35,7 +36,9 @@ body {
   background-color: @background_blue;
   font-family: @alphabetical_font;
 }
-
+.error {
+  padding: 50px;
+}
 .city-header {
   display: flex;
   padding: 35px 0;
@@ -69,44 +72,19 @@ body {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   height: 400px;
   width: 600px;
   border: solid 4px white;
   border-radius: 15px;
   box-shadow: 0px 10px 20px 10px #0000000f;
   grid-template-columns: 1fr fit-content(200px);
+  &.loading {
+    justify-content: center;
+  }
 }
 
-.today-content {
-  display: flex;
-  width: 40%;
-  align-items: flex-end;
-  justify-content: space-evenly;
-}
-
-.today-temp {
-  font-size: 3.5rem;
-  font-family: @number_font;
-  color: @light_black;
-  margin-bottom: -15px;
-}
-
-.today-info {
-  text-align: left;
-}
-
-.today-description {
-  font-size: 1.3rem;
-  font-weight: 100;
-  margin-bottom: 10px;
-}
-
-.today-header {
-  font-size: 1.3rem;
-  font-weight: 100;
-}
-
-.today-row {
+.today {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -116,6 +94,35 @@ body {
   height: 100%;
   grid-row-start: 1;
   grid-row-end: 3;
+
+  .header {
+    font-size: 1.3rem;
+    font-weight: 100;
+  }
+
+  .content {
+    display: flex;
+    width: 40%;
+    align-items: flex-end;
+    justify-content: space-evenly;
+
+    .info {
+      text-align: left;
+
+      .temp {
+        font-size: 3.5rem;
+        font-family: @number_font;
+        color: @light_black;
+        margin-bottom: -15px;
+      }
+
+      .description {
+        font-size: 1.3rem;
+        font-weight: 100;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }
 
 .forecast-row {
@@ -125,7 +132,7 @@ body {
   width: 100%;
   height: 100%;
   grid-row-start: 3;
-  .forecast-day {
+  .day {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -133,22 +140,19 @@ body {
     font-weight: 100;
     width: 100%;
     height: 100%;
-    &.loading {
-      justify-content: center;
-    }
-    .forecast-header {
+    .header {
       margin-top: 20px;
     }
-    .forecast-temp {
+    .temp {
       font-family: @number_font;
       color: @light_black;
       font-size: 1.5rem;
     }
   }
-  .forecast-day:not(:first-child) {
+  .day:not(:first-child) {
     border-left: solid 2px white;
   }
-  .forecast-day:not(:last-child) {
+  .day:not(:last-child) {
     border-right: solid 2px white;
   }
 }

@@ -1,24 +1,34 @@
 import React, { PureComponent } from 'react';
 
 interface DayBoxProps {
-  loading: boolean;
-  spinner: JSX.Element;
   icon: JSX.Element;
   title: string;
   temp: string;
+  description: string;
+  isToday: boolean;
 }
 
 class DayBox extends PureComponent<DayBoxProps> {
   render() {
-    let { loading, spinner, icon, title, temp } = this.props;
+    let { icon, title, temp, description, isToday = false } = this.props;
 
-    return loading ? (
-      <div className='forecast-day loading'>{spinner}</div>
-    ) : (
-      <div className='forecast-day'>
-        <div className='forecast-header'>{title}</div>
-        {icon}
-        <span className='forecast-temp'>{temp}</span>
+    return (
+      <div className={isToday ? 'today' : 'day'}>
+        <div className='header'>{title}</div>
+        {isToday ? (
+          <div className='content'>
+            {icon}
+            <div className='info'>
+              <div className='temp'>{temp}</div>
+              <div className='description'>{description}</div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className='content'>{icon}</div>
+            <div className='temp'>{temp}</div>
+          </>
+        )}
       </div>
     );
   }
