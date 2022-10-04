@@ -10,6 +10,7 @@ interface CityOptionProps {
 class CityOption extends Component<CityOptionProps> {
   render() {
     const { name, index, selectedCityIndex, selectCity } = this.props;
+    // TODO: Conditionally add class better
     const className =
       'city-option' + (selectedCityIndex === index ? ' active' : '');
     return (

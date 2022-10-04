@@ -12,6 +12,8 @@ import {
   faCloudBolt,
   faSnowflake,
   faWater,
+  faSpinner,
+  IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
 export const getIcon = (iconName: string, isLarge: boolean = false) => {
@@ -26,7 +28,7 @@ export const getIcon = (iconName: string, isLarge: boolean = false) => {
   }
 };
 
-const iconLookup = {
+const iconLookup: { [key: string]: IconDefinition } = {
   // clear sky
   '01d': faSun,
   '01n': faMoon,
@@ -62,4 +64,6 @@ const iconLookup = {
   // mist
   '50d': faWater,
   '50n': faWater,
+
+  loading: faSpinner,
 };

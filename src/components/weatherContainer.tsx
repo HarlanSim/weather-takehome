@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { CityData, WeatherData } from '../utils/types';
 import getWeather from '../utils/weatherAPI';
 import { getIcon } from '../utils/icon';
+import DayBox from './dayBox';
+import TodayBox from './todayBox';
 
 interface WeatherContainerProps {
   city: CityData;
@@ -9,6 +11,7 @@ interface WeatherContainerProps {
 
 interface WeatherContainerState {
   weatherData: WeatherData[];
+  loading: boolean;
 }
 
 class WeatherContainer extends Component<
@@ -20,7 +23,7 @@ class WeatherContainer extends Component<
     icon: '',
     temp: null,
   });
-  state = { weatherData: this.initialWeatherData };
+  state = { weatherData: this.initialWeatherData, loading: true };
 
   async componentDidMount() {
     // fetch weather for each city
@@ -32,6 +35,10 @@ class WeatherContainer extends Component<
       city: { lat, lon },
     } = this.props;
     if (prevProps.city.lat !== lat || prevProps.city.lon !== lon) {
+      // Decided against loading between cities as it's a bit too jarring
+      // this.setState({
+      //   loading: true,
+      // });
       this.callWeatherApi();
     }
   }
@@ -39,34 +46,45 @@ class WeatherContainer extends Component<
   async callWeatherApi() {
     const { city } = this.props;
     const weatherData: WeatherData[] = await getWeather(city);
-    this.setState({ weatherData: weatherData });
+    this.setState({ weatherData: weatherData, loading: false });
   }
 
+  loadingSpinner = (isLarge: boolean = false): JSX.Element => {
+    return getIcon('loading', isLarge);
+  };
+
   render() {
-    let [today, ...otherDays] = this.state.weatherData;
-    const forecast = otherDays.map((day) => {
+    let {
+      loading,
+      weatherData: [today, ...otherDays],
+    } = this.state;
+    const BigSpinner = this.loadingSpinner(true);
+    const SmallSpinner = this.loadingSpinner();
+    const Forecast = otherDays.map((day) => {
       return (
-        <div className='forecast-day'>
-          <div className='forecast-header'>{day.day}</div>
-          {getIcon(day.icon)}{' '}
-          <span className='forecast-temp'>{day.temp + '°'}</span>
-        </div>
+        <DayBox
+          spinner={SmallSpinner}
+          loading={loading}
+          icon={getIcon(day.icon)}
+          title={day.day}
+          temp={day.temp + '°'}
+        />
       );
     });
 
     return (
       <div className='weather-box'>
         <div className='today-row'>
-          <div className='today-header'>{today.day}</div>
-          <div className='today-content'>
-            {getIcon(today.icon, true)}
-            <div className='today-info'>
-              <div className='today-temp'>{today.temp + '°'}</div>
-              <div className='today-description'>{today.description}</div>
-            </div>
-          </div>
+          <TodayBox
+            title={today.day}
+            icon={getIcon(today.icon, true)}
+            loading={loading}
+            temp={today.temp + '°'}
+            description={today.description}
+            spinner={BigSpinner}
+          />
         </div>
-        <div className='forecast-row'>{...forecast}</div>
+        <div className='forecast-row'>{...Forecast}</div>
       </div>
     );
   }

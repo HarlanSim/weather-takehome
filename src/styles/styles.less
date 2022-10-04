@@ -26,6 +26,11 @@
   fill: orange;
 }
 
+.fa-spinner {
+  -webkit-animation: fa-spin 1s infinite linear;
+  animation: fa-spin 1s infinite linear;
+}
+
 body {
   background-color: @background_blue;
   font-family: @alphabetical_font;
@@ -128,6 +133,9 @@ body {
     font-weight: 100;
     width: 100%;
     height: 100%;
+    &.loading {
+      justify-content: center;
+    }
     .forecast-header {
       margin-top: 20px;
     }
