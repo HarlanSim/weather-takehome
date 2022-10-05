@@ -1,15 +1,31 @@
 @import './variables';
 
 .icon-small {
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   color: @primary_blue;
+  @media @desktop {
+    height: 50px;
+    width: 50px;
+  }
+  @media @tablet {
+    height: 50px;
+    width: 50px;
+  }
 }
 
 .icon-large {
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
   color: @primary_blue;
+  @media @desktop {
+    height: 100px;
+    width: 100px;
+  }
+  @media @tablet {
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .fa-cloud path {
