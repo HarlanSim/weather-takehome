@@ -1,4 +1,4 @@
-import { CityData } from './types';
+import { CityData } from './interfaces';
 
 export const CITIES: CityData[] = [
   { name: 'Hanoi', lat: 21.0278, lon: 105.8342 },

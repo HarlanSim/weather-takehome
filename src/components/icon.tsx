@@ -16,10 +16,10 @@ import {
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const getIcon = (
+export function getIcon(
   iconName: string,
   isLarge: boolean = false
-): JSX.Element => {
+): JSX.Element {
   if (iconName) {
     const icon = iconLookup[iconName];
     return (
@@ -29,7 +29,7 @@ export const getIcon = (
       />
     );
   }
-};
+}
 
 const iconLookup: { [key: string]: IconDefinition } = {
   // clear sky

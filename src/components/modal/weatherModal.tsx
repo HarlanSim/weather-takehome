@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { CityData, WeatherData } from '../../utils/types';
-import getWeather from '../../api/fetch';
-import { getIcon } from '../../utils/icon';
+import { CityData, WeatherData, WeatherResponse } from '../../utils/interfaces';
+import { parseWeatherData } from '../../utils/helpers';
+import WeatherAPI from '../../api/weatherApi';
+import { getIcon } from '../icon';
 import DayBox from './dayBox';
 import { ERROR_MESSAGE } from '../../utils/constants';
 
@@ -13,6 +14,7 @@ interface WeatherModalState {
   weatherData: WeatherData[];
   loading: boolean;
   error: boolean;
+  weatherAPI: WeatherAPI;
 }
 
 class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
@@ -22,39 +24,53 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
     temp: null,
     description: '',
   });
-  state = { weatherData: this.initialWeatherData, loading: true, error: false };
+
+  state = {
+    weatherData: this.initialWeatherData,
+    weatherAPI: null,
+    loading: true,
+    error: false,
+  };
 
   async componentDidMount() {
-    // fetch weather for each city
-    this.callWeatherApi().catch(() => {
-      this.setState({
-        error: true,
-        loading: false,
-      });
-    });
+    const appId = process.env.OPENWEATHER_APP_ID || '';
+    const weatherApi = new WeatherAPI(appId);
+    this.getWeatherData(weatherApi);
+    this.setState({ weatherAPI: weatherApi });
   }
 
   async componentDidUpdate(prevProps: Readonly<WeatherModalProps>) {
     const {
       city: { lat, lon },
     } = this.props;
+    const { weatherAPI } = this.state;
     if (prevProps.city.lat !== lat || prevProps.city.lon !== lon) {
       this.setState({
         loading: true,
       });
-      this.callWeatherApi().catch(() => {
+      this.getWeatherData(weatherAPI);
+    }
+  }
+
+  async getWeatherData(weatherApi): Promise<void> {
+    const { lat, lon } = this.props.city;
+    return weatherApi
+      .getForecast(lat, lon)
+      .then((data: WeatherResponse) => {
+        const weatherData: WeatherData[] = parseWeatherData(data);
+        this.setState({
+          weatherData: weatherData,
+          weatherAPI: weatherApi,
+          loading: false,
+          error: false,
+        });
+      })
+      .catch(() => {
         this.setState({
           error: true,
           loading: false,
         });
       });
-    }
-  }
-
-  async callWeatherApi() {
-    const { city } = this.props;
-    const weatherData: WeatherData[] = await getWeather(city);
-    this.setState({ weatherData: weatherData, loading: false });
   }
 
   loadingSpinner = (): JSX.Element => {

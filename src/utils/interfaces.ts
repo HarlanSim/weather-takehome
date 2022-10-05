@@ -1,37 +1,39 @@
-export type WeatherData = {
+interface WeatherData {
   icon: string;
   temp: number;
   day: string;
   description: string;
-};
+}
 
-export type CityData = {
+interface CityData {
   name: string;
   lat: number;
   lon: number;
-};
+}
 
-export type WeatherResponse = {
+interface WeatherResponse {
   timezone: string;
   current: TodayData;
   daily: DayData[];
-};
+}
 
-type TodayData = {
+interface TodayData {
   temp: number;
   weather: DayWeatherData[];
-};
+}
 
-type DayData = {
+interface DayData {
   temp: TempData;
   weather: DayWeatherData[];
-};
+}
 
-type TempData = {
+interface TempData {
   day: number;
-};
+}
 
-type DayWeatherData = {
+interface DayWeatherData {
   main: string;
   icon: string;
-};
+}
+
+export { WeatherData, CityData, WeatherResponse };
