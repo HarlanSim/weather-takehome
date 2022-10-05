@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import CityHeader from './cityHeader';
-import WeatherContainer from './weatherContainer';
+import CityHeader from './header/cityHeader';
+import WeatherModal from './modal/WeatherModal';
 import { CITIES } from '../utils/constants';
 
 interface HomeState {
@@ -25,7 +25,7 @@ class Home extends Component {
           selectedCityIndex={selectedCityIndex}
           selectCity={(index) => this.selectCity(index)}
         />
-        <WeatherContainer city={CITIES[selectedCityIndex]} />
+        <WeatherModal city={CITIES[selectedCityIndex]} />
       </div>
     );
   }

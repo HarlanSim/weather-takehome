@@ -1,23 +1,20 @@
 import React, { Component } from 'react';
-import { CityData, WeatherData } from '../utils/types';
-import getWeather from '../utils/weatherAPI';
-import { getIcon } from '../utils/icon';
+import { CityData, WeatherData } from '../../utils/types';
+import getWeather from '../../api/fetch';
+import { getIcon } from '../../utils/icon';
 import DayBox from './dayBox';
 
-interface WeatherContainerProps {
+interface WeatherModalProps {
   city: CityData;
 }
 
-interface WeatherContainerState {
+interface WeatherModalState {
   weatherData: WeatherData[];
   loading: boolean;
   error: boolean;
 }
 
-class WeatherContainer extends Component<
-  WeatherContainerProps,
-  WeatherContainerState
-> {
+class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
   initialWeatherData: WeatherData[] = Array(5).fill({
     day: '',
     icon: '',
@@ -35,7 +32,7 @@ class WeatherContainer extends Component<
     });
   }
 
-  async componentDidUpdate(prevProps: Readonly<WeatherContainerProps>) {
+  async componentDidUpdate(prevProps: Readonly<WeatherModalProps>) {
     const {
       city: { lat, lon },
     } = this.props;
@@ -113,4 +110,4 @@ class WeatherContainer extends Component<
   }
 }
 
-export default WeatherContainer;
+export default WeatherModal;

@@ -16,7 +16,10 @@ import {
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const getIcon = (iconName: string, isLarge: boolean = false) => {
+export const getIcon = (
+  iconName: string,
+  isLarge: boolean = false
+): JSX.Element => {
   if (iconName) {
     const icon = iconLookup[iconName];
     return (
