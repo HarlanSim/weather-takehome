@@ -4,7 +4,8 @@ weather-takehome is a simple web application that displays the forecast for 3 gi
 
 ### How to run the project locally:
 
-Before you can run the project, you must obtain an API key from [OpenWeather](https://openweathermap.org/api) and replace the constant value of `APP_ID`. Then simply:
+Before you can run the project, you must obtain an API key from [OpenWeather](https://openweathermap.org/api) and then add it to an .env file in your base directory like so: `OPENWEATHER_APP_ID=your API Key here`.
+Then simply:
 
 ```
 npm install

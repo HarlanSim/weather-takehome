@@ -7,7 +7,6 @@ import ErrorMessage from './error';
 import Spinner from './spinner';
 import DayBox from './dayBox';
 import DayBoxList from './dayBoxList';
-import { APP_ID } from '../../utils/constants';
 
 interface WeatherModalProps {
   city: CityData;
@@ -36,7 +35,7 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
   };
 
   async componentDidMount() {
-    const weatherApi = new WeatherAPI(APP_ID);
+    const weatherApi = new WeatherAPI(process.env.OPENWEATHER_APP_ID);
     this.getWeatherData(weatherApi);
     this.setState({ weatherAPI: weatherApi });
   }
@@ -47,32 +46,28 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
     } = this.props;
     const { weatherAPI } = this.state;
     if (prevProps.city.lat !== lat || prevProps.city.lon !== lon) {
-      this.setState({
-        loading: true,
-      });
       this.getWeatherData(weatherAPI);
     }
   }
 
   async getWeatherData(weatherApi): Promise<void> {
     const { lat, lon } = this.props.city;
-    return weatherApi
-      .getForecast(lat, lon)
-      .then((data: WeatherResponse) => {
-        const weatherData: WeatherData[] = parseWeatherData(data);
-        this.setState({
-          weatherData: weatherData,
-          weatherAPI: weatherApi,
-          loading: false,
-          error: false,
-        });
-      })
-      .catch(() => {
-        this.setState({
-          error: true,
-          loading: false,
-        });
+    try {
+      const data: WeatherResponse = await weatherApi.getForecast(lat, lon);
+      const weatherData: WeatherData[] = parseWeatherData(data);
+      this.setState({
+        weatherData: weatherData,
+        weatherAPI: weatherApi,
+        loading: false,
+        error: false,
       });
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        error: true,
+        loading: false,
+      });
+    }
   }
 
   render() {
