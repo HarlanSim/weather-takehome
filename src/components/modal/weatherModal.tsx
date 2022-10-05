@@ -16,7 +16,6 @@ interface WeatherModalState {
   weatherData: WeatherData[];
   loading: boolean;
   error: boolean;
-  weatherAPI: WeatherAPI;
 }
 
 class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
@@ -29,35 +28,30 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
 
   state = {
     weatherData: this.initialWeatherData,
-    weatherAPI: null,
     loading: true,
     error: false,
   };
 
   async componentDidMount() {
-    const weatherApi = new WeatherAPI(process.env.OPENWEATHER_APP_ID);
-    this.getWeatherData(weatherApi);
-    this.setState({ weatherAPI: weatherApi });
+    this.getWeatherData();
   }
 
   async componentDidUpdate(prevProps: Readonly<WeatherModalProps>) {
     const {
       city: { lat, lon },
     } = this.props;
-    const { weatherAPI } = this.state;
     if (prevProps.city.lat !== lat || prevProps.city.lon !== lon) {
-      this.getWeatherData(weatherAPI);
+      this.getWeatherData();
     }
   }
 
-  async getWeatherData(weatherApi): Promise<void> {
+  async getWeatherData(): Promise<void> {
     const { lat, lon } = this.props.city;
     try {
-      const data: WeatherResponse = await weatherApi.getForecast(lat, lon);
+      const data: WeatherResponse = await WeatherAPI.getForecast(lat, lon);
       const weatherData: WeatherData[] = parseWeatherData(data);
       this.setState({
         weatherData: weatherData,
-        weatherAPI: weatherApi,
         loading: false,
         error: false,
       });

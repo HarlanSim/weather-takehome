@@ -1,14 +1,9 @@
 export default class WeatherAPI {
-  appId: string;
-  constructor(appId: string) {
-    this.appId = appId;
-  }
+  static weatherURL = 'https://api.openweathermap.org/data/3.0';
 
-  weatherURL = 'https://api.openweathermap.org/data/3.0';
-
-  async getForecast(lat, lon) {
+  static async getForecast(lat, lon) {
     return fetch(
-      `${this.weatherURL}/onecall?lat=${lat}&lon=${lon}&appid=${this.appId}`
+      `${this.weatherURL}/onecall?lat=${lat}&lon=${lon}&appid=${process.env.OPENWEATHER_APP_ID}`
     )
       .then((response) => {
         if (!response.ok) {
