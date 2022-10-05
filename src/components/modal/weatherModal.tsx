@@ -20,6 +20,7 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
     day: '',
     icon: '',
     temp: null,
+    description: '',
   });
   state = { weatherData: this.initialWeatherData, loading: true, error: false };
 
