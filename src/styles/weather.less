@@ -44,7 +44,15 @@
     width: 40%;
     align-items: flex-end;
     justify-content: space-evenly;
-
+    svg {
+      margin-right: 15px;
+      @media @desktop {
+        margin-right: 0;
+      }
+      @media @tablet {
+        margin-right: 0;
+      }
+    }
     .info {
       text-align: left;
 
