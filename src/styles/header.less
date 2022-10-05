@@ -3,10 +3,18 @@
 .city-header {
   display: flex;
   padding: 35px 0;
-  width: 40%;
+  width: 100%;
+  font-size: 1.1rem;
   font-size: large;
   font-family: @alphabetical_font;
   align-items: center;
+  @media @desktop {
+    width: 50%;
+    font-size: 1.3rem;
+  }
+  @media @tablet {
+    width: 60%;
+  }
 }
 
 .city-option {
