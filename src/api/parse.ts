@@ -29,7 +29,7 @@ const getDayFromTimeZone = (timezone: string, increment: number): string => {
   const dateString: string = new Date().toLocaleString('en-US', {
     timeZone: timezone,
   });
-  // Get the day index, then mod it by 7 to get day from DAYS
+  // Get the day index, then mod it by 7 to get the day of the week from DAYS object
   const dayIndex: number = new Date(dateString).getDay() + increment;
   return DAYS[dayIndex % 7];
 };
