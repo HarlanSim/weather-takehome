@@ -7,7 +7,7 @@ export const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
   if (data && current && daily) {
     result.push({
       icon: current.weather[0]?.icon ?? '',
-      temp: convertFromKelvinToCelsuis(current.temp),
+      temp: convertFromKelvinToCelsius(current.temp),
       day: 'Today',
       description: current.weather[0]?.main,
     });
@@ -15,7 +15,7 @@ export const parseWeatherData = (data: WeatherResponse): WeatherData[] => {
       const day = daily[index];
       result.push({
         icon: day?.weather[0]?.icon ?? '',
-        temp: convertFromKelvinToCelsuis(day?.temp?.day),
+        temp: convertFromKelvinToCelsius(day?.temp?.day),
         day: getDayFromTimeZone(timezone, index + 1),
         description: '',
       });
@@ -34,6 +34,6 @@ const getDayFromTimeZone = (timezone: string, increment: number): string => {
   return DAYS[dayIndex % 7];
 };
 
-const convertFromKelvinToCelsuis = (temp: number): number => {
+const convertFromKelvinToCelsius = (temp: number): number => {
   return temp ? Math.round(temp - 273.15) : 0;
 };
