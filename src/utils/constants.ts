@@ -12,3 +12,5 @@ export const ERROR_MESSAGE: string =
   'An unexpected error has occurred, please try again later.';
 
 export const FORECAST_LENGTH = 4;
+
+export const APP_ID = process.env.OPENWEATHER_APP_ID || '';

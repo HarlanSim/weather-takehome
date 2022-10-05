@@ -7,6 +7,7 @@ import ErrorMessage from './error';
 import Spinner from './spinner';
 import DayBox from './dayBox';
 import DayBoxList from './dayBoxList';
+import { APP_ID } from '../../utils/constants';
 
 interface WeatherModalProps {
   city: CityData;
@@ -35,8 +36,7 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
   };
 
   async componentDidMount() {
-    const appId = process.env.OPENWEATHER_APP_ID || '';
-    const weatherApi = new WeatherAPI(appId);
+    const weatherApi = new WeatherAPI(APP_ID);
     this.getWeatherData(weatherApi);
     this.setState({ weatherAPI: weatherApi });
   }
