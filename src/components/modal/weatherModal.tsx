@@ -3,6 +3,7 @@ import { CityData, WeatherData } from '../../utils/types';
 import getWeather from '../../api/fetch';
 import { getIcon } from '../../utils/icon';
 import DayBox from './dayBox';
+import { ERROR_MESSAGE } from '../../utils/constants';
 
 interface WeatherModalProps {
   city: CityData;
@@ -60,11 +61,7 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
   };
 
   error = (): JSX.Element => {
-    return (
-      <div className='error'>
-        An unexpected error has occurred, please try again later.
-      </div>
-    );
+    return <div className='error'>{ERROR_MESSAGE}</div>;
   };
 
   render() {

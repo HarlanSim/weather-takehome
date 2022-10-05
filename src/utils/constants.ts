@@ -8,4 +8,7 @@ export const CITIES: CityData[] = [
 
 export const DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+export const ERROR_MESSAGE: string =
+  'An unexpected error has occurred, please try again later.';
+
 export const FORECAST_LENGTH = 4;
