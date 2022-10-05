@@ -3,8 +3,10 @@ import { CityData, WeatherData, WeatherResponse } from '../../utils/interfaces';
 import { parseWeatherData } from '../../utils/helpers';
 import WeatherAPI from '../../api/weatherApi';
 import { getIcon } from '../icon';
+import ErrorMessage from './error';
+import Spinner from './spinner';
 import DayBox from './dayBox';
-import { ERROR_MESSAGE } from '../../utils/constants';
+import DayBoxList from './dayBoxList';
 
 interface WeatherModalProps {
   city: CityData;
@@ -73,40 +75,19 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
       });
   }
 
-  loadingSpinner = (): JSX.Element => {
-    return getIcon('loading', true);
-  };
-
-  error = (): JSX.Element => {
-    return <div className='error'>{ERROR_MESSAGE}</div>;
-  };
-
   render() {
     let {
       loading,
       error,
       weatherData: [today, ...otherDays],
     } = this.state;
-    const Error = this.error();
-    const Spinner = this.loadingSpinner();
-    const Forecast = otherDays.map((day) => {
-      return (
-        <DayBox
-          icon={getIcon(day.icon)}
-          title={day.day}
-          temp={day.temp + '°'}
-          isToday={false}
-          description={''}
-        />
-      );
-    });
 
     return (
       <div className={loading ? 'weather-box loading' : 'weather-box'}>
         {error ? (
-          Error
+          <ErrorMessage />
         ) : loading ? (
-          Spinner
+          <Spinner />
         ) : (
           <>
             <DayBox
@@ -116,7 +97,7 @@ class WeatherModal extends Component<WeatherModalProps, WeatherModalState> {
               description={today.description}
               isToday
             />
-            <div className='forecast-row'>{...Forecast}</div>
+            <DayBoxList days={otherDays} />
           </>
         )}
       </div>
