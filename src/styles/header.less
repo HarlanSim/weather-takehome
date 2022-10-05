@@ -1,0 +1,22 @@
+@import './variables';
+
+.city-header {
+  display: flex;
+  padding: 35px 0;
+  width: 40%;
+  font-size: large;
+  font-family: @alphabetical_font;
+  align-items: center;
+}
+
+.city-option {
+  text-transform: uppercase;
+  font-weight: lighter;
+  cursor: pointer;
+  flex-basis: 33.333333%;
+  text-align: center;
+  &.active {
+    color: @primary_blue;
+    font-weight: normal;
+  }
+}
