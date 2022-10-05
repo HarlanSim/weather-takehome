@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CityHeader from './header/cityHeader';
-import WeatherModal from './modal/WeatherModal';
+import WeatherModal from './modal/weatherModal';
 import { CITIES } from '../utils/constants';
 
 interface HomeState {
